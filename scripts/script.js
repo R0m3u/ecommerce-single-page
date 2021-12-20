@@ -201,44 +201,36 @@ for(let i = 0; i < add.length; i++) {
 
 //============================CAROUSEL DESKTOP AND GALLERY======================//
 let gallery = document.querySelectorAll(".tb");
+let thumbs = document.querySelectorAll(".thumb");
+let imgsGallery = document.querySelector(".main-imgs > .product-img");
 let main = document.querySelector(".product-img");
 let carousel = document.querySelector(".carousel-desktop");
 let arrows_carousel = document.querySelectorAll(".arr");
 let counter = 0;
 let clks = 1;
 let imgs = document.querySelectorAll(".p-img");
-for(var i = 0; i < gallery.length; i++) {
-    gallery[i].addEventListener("click", (e) => {
-        let index = Array.from(gallery).indexOf(e.target);
-        gallery[index].classList.add("selected");
-        // clks++; 
 
-        if(clks > 0  && gallery[0].classList.contains("selected")) {
-            clks = 0;
-            gallery[0].classList.remove("selected");
-        }
-           
-        else if(clks == 1 && gallery[1].classList.contains("selected")) {
-            clks = 0;
-            gallery[1].classList.remove("selected");
-        }
+gallery.forEach(thumb => {
+    thumb.addEventListener("click", e => {
+        gallery.forEach(thumb => {
+            thumb.classList.remove("selected");
 
-           
-        else if(clks == 1 && gallery[2].classList.contains("selected")) {
-            clks = 0;
-            gallery[2].classList.remove("selected");
-        }
-           
-        else if(clks == 1 && gallery[3].classList.contains("selected")) {
-            clks = 0;
-            gallery[3].classList.remove("selected");
-        }
+            e.target.classList.add("selected");
+            imgsGallery.src = e.target.src.replace("-thumbnail", "");
+        });
     });
+});
 
-    //achar um jeito de mapear elementos que ja possuem a class selected e deixar apenas o ultimo elemento
-    //que foi clicado com a class selected 
-}
+thumbs.forEach(thumb => {
+    thumb.addEventListener("click", (e) => {
+        thumbs.forEach(thumb => {
+            thumb.classList.remove("selected");
 
+            e.target.classList.add("selected");
+            main.src = e.target.src.replace("-thumbnail", "");
+        });
+    });
+});
 
 
 main.addEventListener("click", (e) => {
