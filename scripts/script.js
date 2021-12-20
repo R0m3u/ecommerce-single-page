@@ -151,7 +151,7 @@ for(let i = 0; i < add.length; i++) {
             if(items) {
                 productFull.innerHTML += `<div class="main-box">
                 <div>
-                  <img class="cart-product" src="./images/image-product-1-thumbnail.jpg" alt="product in cart">
+                  <img class="cart-product" src="./_images/image-product-1-thumbnail.jpg" alt="product in cart">
                   <div class="legend">
                     <p>Autumn Limited</p>
                     <p>
